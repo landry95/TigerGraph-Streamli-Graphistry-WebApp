@@ -15,19 +15,19 @@
 		Clone this project
 	</li><br>
 	<li>
-		install python : <a href="https://www.python.org/downloads/" target="blank">See here</a>
+		install python : <br> <a href="https://www.python.org/downloads/" target="blank">See here</a>
 	</li><br>
 	<li>
-		install python virtual environment in the project location: pip install virtualenv 
+		install python virtual environment in the project location: <br> pip install virtualenv 
 	</li><br>
 	<li>
-		Activate the virtual envirenment: venv/bin/activate.bat
+		Activate the virtual envirenment: <br> venv/bin/activate.bat
 	</li><br>
 	<li>
-		Install the requirements: pip install -r requirements.txt
+		Install the requirements: <br> pip install -r requirements.txt
 	</li><br>
 	<li>
-		Lunch the application: streamlit run tigergraph.py
+		Lunch the application: <br> streamlit run tigergraph.py
 	</li><br>
   	<li>
 		Copy the link it generates from your console and past it in your navigator
