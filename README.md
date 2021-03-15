@@ -1,4 +1,4 @@
-<h1>Tigergraph, Streamlit Application</h1>
+<h1>streamlit Data Analysis Application with Tigergraph, graphistry </h1
 <br>
 
 <h3><b>Video Demo </b></h3>
