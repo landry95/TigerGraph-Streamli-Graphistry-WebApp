@@ -1,0 +1,10 @@
+streamlit
+pandas
+graphistry
+matplotlib
+pyTigerGraphBeta
+dateparser
+PIL
+awesome-streamlit
+seaborn
+plotly
