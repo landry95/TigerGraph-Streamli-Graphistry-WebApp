@@ -3,7 +3,7 @@
 
 <h3><b>Video Demo </b></h3>
 
-[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/landry95/TigerGraph-Streamli-Graphistry-WebApp/main/src/img/12.PNG)](https://www.youtube.com/watch?v=_jkQ3AKXZ2o)
+[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/landry95/TigerGraph-Streamli-Graphistry-WebApp/main/src/img/12.PNG)](https://www.youtube.com/watch?v=ilUijXK0Qc8)
 
 
 
