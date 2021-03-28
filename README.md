@@ -97,6 +97,7 @@ I used many technologies :
 		<img src="./src/img/schema.PNG">
 		<small>Shemas from TigerGraph</small>
 	</div>
+	<h1></h1>
 	<div>
 		<img src="./src/img/graph_explorer.PNG">
 		<small>Graph Explorer from TigerGraph cloud</small>
