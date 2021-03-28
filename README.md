@@ -93,5 +93,24 @@ I used many technologies :
 
 <h1><b><i>GALLERY</i></b></h1>
 <div>
-	<img src="./src/img/11.PNG">
+	<div>
+		<img src="./src/img/schema.PNG">
+		<small>Shemas from TigerGraph</small>
+	</div>
+	<div>
+		<img src="./src/img/graph_explorer.PNG">
+		<small>Graph Explorer from TigerGraph cloud</small>
+	</div>
+	<div>
+		<img src="./src/img/map_data.PNG">
+		<small>Data maping  from TigerGraph cloud</small>
+	</div>
+	<div>
+		<img src="./src/img/example_querry.PNG">
+		<small>Query example from TigerGraph cloud</small>
+	</div>
+	<div>
+		<img src="./src/img/graphistory.PNG">
+		<small>Graphistory platform</small>
+	</div>
 </div>
