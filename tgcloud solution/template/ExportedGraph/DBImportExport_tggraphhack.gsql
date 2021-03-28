@@ -1,0 +1,140 @@
+set exit_on_error = "false"
+CREATE GRAPH tggraphhack()
+CREATE SCHEMA_CHANGE JOB schema_change_job_KluwSc FOR GRAPH tggraphhack { 
+  ADD VERTEX manufacturers(PRIMARY_ID id INT, address STRING, comment STRING, name STRING, parent_company STRING, representative STRING, slug STRING, source STRING, created_at DATETIME, updated_at DATETIME) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true";
+  ADD VERTEX devices(PRIMARY_ID divid INT, classification STRING, code STRING, description STRING, distributed_to STRING, implanted STRING, name STRING, number INT, quantity_in_commerce INT, risk_class INT, slug STRING, country STRING, manufacturer_id INT, created_at DATETIME, updated_at DATETIME) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true";
+  ADD VERTEX events(PRIMARY_ID eventid INT, action INT, action_classification STRING, action_level INT, action_summary STRING, authorities_link STRING, country STRING, create_date DATETIME, data_notes STRING, date DATETIME, date_initiated_by_firm DATETIME, date_posted DATETIME, date_terminated DATETIME, date_updated DATETIME, determined_cause STRING, documents STRING, icij_notes STRING, number INT, reason STRING, source STRING, status STRING, target_audience STRING, type STRING, uid STRING, uid_hash STRING, url STRING, slug STRING, device_id INT, created_at DATETIME, updated_at DATETIME) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true";
+  ADD UNDIRECTED EDGE sels(FROM manufacturers, TO devices);
+  ADD UNDIRECTED EDGE concerns(FROM devices, TO events);
+}
+RUN SCHEMA_CHANGE JOB schema_change_job_KluwSc
+DROP JOB schema_change_job_KluwSc
+CREATE LOADING JOB load_job_manufacturers_1574540422_csv_1615073639975 FOR GRAPH tggraphhack {
+      DEFINE FILENAME MyDataSource;
+      LOAD MyDataSource TO VERTEX manufacturers VALUES($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) USING SEPARATOR=",", HEADER="true", EOL="\n";
+    }
+
+CREATE LOADING JOB load_job_devices_1574540427_csv_1615073882879 FOR GRAPH tggraphhack {
+      DEFINE FILENAME MyDataSource;
+      LOAD MyDataSource TO VERTEX devices VALUES($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) USING SEPARATOR=",", HEADER="true", EOL="\n";
+      LOAD MyDataSource TO EDGE sels VALUES($12, $0) USING SEPARATOR=",", HEADER="true", EOL="\n";
+    }
+
+CREATE LOADING JOB load_job_events_1574540448_csv_1615075292359 FOR GRAPH tggraphhack {
+      DEFINE FILENAME MyDataSource;
+      LOAD MyDataSource TO VERTEX events VALUES($0, _, $2, _, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, _, $15, $16, _, _, _, _, _, _, _, _, _, _, $27, _, _) USING SEPARATOR=",", HEADER="true", EOL="\n";
+      LOAD MyDataSource TO EDGE concerns VALUES($27, $0) USING SEPARATOR=",", HEADER="true", EOL="\n";
+    }
+
+CREATE QUERY getmanufanddevices(/* Parameters here */) FOR GRAPH tggraphhack { 
+  TYPEDEF tuple<INT divid, INT manufacturer_id, STRING country, STRING name, STRING       description, STRING manufacturer_name, STRING source, STRING manufacurer_slug, STRING classification> data;
+  SetAccum<data> @@res;
+  ListAccum<VERTEX> @@a;
+  manuf = {manufacturers.*};
+  div = {devices.*};
+  all = {ANY};
+  
+  res = select d from manuf:m -(sels:s)->devices:d
+      ACCUM @@res += data(d.divid, d.manufacturer_id, d.country, d.name, d.description, m.name, m.source, m.slug, d.classification)
+      ;
+  
+  PRINT @@res;
+}
+CREATE QUERY getdevicesbycountry(STRING country) FOR GRAPH tggraphhack {
+  
+  device = {devices.*};
+  
+  res = select d from device:d
+    WHERE d.country == country;
+  PRINT res;
+}
+CREATE QUERY getcountries(/* Parameters here */) FOR GRAPH tggraphhack { 
+  TYPEDEF tuple<STRING country> countries;
+  SetAccum<STRING> @@country;
+  manuf = {manufacturers.*};
+  device = {devices.*};
+  result = SELECT d
+      FROM device:d
+      ACCUM @@country += d.country
+      LIMIT 3;
+  
+  PRINT @@country;
+}
+CREATE QUERY getdevicesandcountries(/* Parameters here */) FOR GRAPH tggraphhack { 
+  device = {devices.*};
+  
+  res = select d from device:d
+  LIMIT 1060;
+  PRINT res;
+}
+CREATE QUERY getdatasource(/* Parameters here */) FOR GRAPH tggraphhack { 
+  TYPEDEF tuple<STRING manufacture> manufact;
+  SetAccum<STRING> @@manufacture;
+  manuf = {manufacturers.*};
+  result = SELECT m
+      FROM manuf:m
+      ACCUM @@manufacture += m.source
+      LIMIT 3;
+  
+  PRINT @@manufacture;
+}
+CREATE QUERY getmanufanddevicesbycountry(STRING country) FOR GRAPH tggraphhack { 
+  TYPEDEF tuple<INT divid, INT manufacturer_id, STRING country, STRING name, STRING       description, STRING manufacturer_name, STRING source, STRING manufacurer_slug, STRING classification> data;
+  SetAccum<data> @@res;
+  ListAccum<VERTEX> @@a;
+  manuf = {manufacturers.*};
+  div = {devices.*};
+  all = {ANY};
+  
+  res = select d from manuf:m -(sels:s)->devices:d
+      //WHERE d.country == country
+      ACCUM @@res += data(d.divid, d.manufacturer_id, d.country, d.name, d.description, m.name, m.source, m.slug, d.classification)
+      ;
+  
+  PRINT @@res;
+}
+CREATE QUERY getclassifications(/* Parameters here */) FOR GRAPH tggraphhack { 
+  TYPEDEF tuple<STRING dvc> dvcs;
+  SetAccum<STRING> @@dvc;
+  device = {devices.*};
+  result = SELECT d
+      FROM device:d
+      ACCUM @@dvc += d.classification
+      LIMIT 3;
+  
+  PRINT @@dvc;
+}
+CREATE QUERY demo() FOR GRAPH tggraphhack SYNTAX v2{ 
+  /* Write query logic here */
+  ListAccum<INT> @@t;
+  manuf = {manufacturers.*};
+  event = {events.*};
+  device = {devices.*};
+  //result1 = SELECT m
+    //      FROM manuf:m
+      //    LIMIT 105;
+  //result2 = SELECT m
+    //      FROM event:m
+      //    LIMIT 105;
+  //result3 = SELECT m
+    //      FROM device:m
+      //    LIMIT 105;
+  res = SELECT m
+            FROM manuf:m -(sels:s)- devices:d -(concerns:c)- events:tgt
+            //WHERE d.country == ""
+            ;
+  
+  PRINT res;
+}
+CREATE QUERY getcountriesfreq(/* Parameters here */) FOR GRAPH tggraphhack { 
+  TYPEDEF tuple<STRING country> countries;
+  ListAccum<STRING> @@country;
+  manuf = {manufacturers.*};
+  device = {devices.*};
+  result = SELECT d
+      FROM device:d
+      ACCUM @@country += d.country;
+  
+  PRINT @@country;
+}
+set exit_on_error = "true"

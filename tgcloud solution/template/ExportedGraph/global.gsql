@@ -1,0 +1,2 @@
+set exit_on_error = "false"
+set exit_on_error = "true"

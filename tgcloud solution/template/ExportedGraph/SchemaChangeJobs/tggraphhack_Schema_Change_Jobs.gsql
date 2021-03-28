@@ -1,0 +1,110 @@
+CREATE SCHEMA_CHANGE JOB local_schema_change_iEpJ4PhdMj FOR GRAPH tggraphhack {
+      ADD VERTEX bank(PRIMARY_ID id INT, filer_name STRING, filer_id STRING, entity STRING, entity_country STRING, entity_code STRING) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true";
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_ahmP8Esn2z FOR GRAPH tggraphhack {
+      ALTER VERTEX bank ADD ATTRIBUTE (entity_id STRING);
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_iapYV8RR67 FOR GRAPH tggraphhack {
+      DROP VERTEX bank;
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_dGwAUFGZGz FOR GRAPH tggraphhack {
+      ADD VERTEX manufacturers(PRIMARY_ID id INT, address STRING, comment STRING, name STRING, parent_company STRING, representative STRING, slug STRING, source STRING, created_at DATETIME, updated_at DATETIME) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true";
+      ADD VERTEX devices(PRIMARY_ID id INT, classification STRING, code STRING, description STRING, distributed_to STRING, implanted STRING, name STRING, number INT, quantity_in_commerce INT, risk_class INT, slug STRING, country STRING, manufacturer_id INT, created_at DATETIME, updated_at DATETIME) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true";
+      ADD VERTEX events(PRIMARY_ID id INT, action STRING, action_classification STRING, action_level STRING, action_summary STRING, authorities_link STRING, country STRING, create_date DATETIME, data_notes DATETIME, date DATETIME, date_initiated_by_firm DATETIME, date_posted DATETIME, date_terminated DATETIME, date_updated DATETIME, determined_cause DATETIME, documents STRING, icij_notes STRING, number INT, reason STRING, source STRING, status STRING, target_audience STRING, type STRING, uid STRING, uid_hash STRING, url STRING, slug STRING, device_id INT, created_at DATETIME, updated_at DATETIME) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true";
+      ADD UNDIRECTED EDGE sels(FROM manufacturers, TO devices);
+      ADD UNDIRECTED EDGE concerns(FROM events, TO devices);
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_AKIDtDBMHq FOR GRAPH tggraphhack {
+      DROP EDGE sels;
+      DROP EDGE concerns;
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_1GiWb3tuet FOR GRAPH tggraphhack {
+      ADD UNDIRECTED EDGE sels(FROM manufacturers, TO devices|FROM devices, TO manufacturers);
+      ADD UNDIRECTED EDGE concerns(FROM devices, TO events|FROM events, TO devices);
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_MpS5yYeQIM FOR GRAPH tggraphhack {
+      ALTER VERTEX events DROP ATTRIBUTE (data_notes, date, date_initiated_by_firm, date_posted, date_terminated, date_updated, determined_cause, documents, icij_notes, number, reason, source, status, target_audience, type, uid, uid_hash, url, slug, device_id, created_at, updated_at);
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_Pe3EpNDFo8 FOR GRAPH tggraphhack {
+      ALTER VERTEX events ADD ATTRIBUTE (data_notes STRING, date DATETIME, date_initiated_by_firm DATETIME, date_posted DATETIME, date_terminated DATETIME, date_updated DATETIME, determined_cause STRING, documents STRING, icij_notes STRING, number INT, reason STRING, source STRING, status STRING, target_audience STRING, type STRING, uid STRING, uid_hash STRING, url STRING, slug STRING, device_id INT, created_at DATETIME, updated_at DATETIME);
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_bUK04onwxP FOR GRAPH tggraphhack {
+      ALTER VERTEX events DROP ATTRIBUTE (action, action_classification, action_level, action_summary, authorities_link, country, create_date, data_notes, date, date_initiated_by_firm, date_posted, date_terminated, date_updated, determined_cause, documents, icij_notes, number, reason, source, status, target_audience, type, uid, uid_hash, url, slug, device_id, created_at, updated_at);
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_srVVOa6GIN FOR GRAPH tggraphhack {
+      ALTER VERTEX events ADD ATTRIBUTE (action INT, action_classification STRING, action_level INT, action_summary STRING, authorities_link STRING, country STRING, create_date DATETIME, data_notes STRING, date DATETIME, date_initiated_by_firm DATETIME, date_posted DATETIME, date_terminated DATETIME, date_updated DATETIME, determined_cause STRING, documents STRING, icij_notes STRING, number INT, reason STRING, source STRING, status STRING, target_audience STRING, type STRING, uid STRING, uid_hash STRING, url STRING, slug STRING, device_id INT, created_at DATETIME, updated_at DATETIME);
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_T1WtbsPWXU FOR GRAPH tggraphhack {
+      DROP EDGE sels;
+      DROP EDGE concerns;
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_IgUfqW29JS FOR GRAPH tggraphhack {
+      ADD UNDIRECTED EDGE sels(FROM manufacturers, TO devices);
+      ADD UNDIRECTED EDGE concerns(FROM devices, TO events);
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_2PX0au6X9r FOR GRAPH tggraphhack {
+      DROP VERTEX devices;
+      DROP VERTEX events;
+      DROP EDGE sels;
+      DROP EDGE concerns;
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_grMwnCdXEm FOR GRAPH tggraphhack {
+      ADD VERTEX devices(PRIMARY_ID divid INT, classification STRING, code STRING, description STRING, distributed_to STRING, implanted STRING, name STRING, number INT, quantity_in_commerce INT, risk_class INT, slug STRING, country STRING, manufacturer_id INT, created_at DATETIME, updated_at DATETIME) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true";
+      ADD VERTEX events(PRIMARY_ID eventid INT, action INT, action_classification STRING, action_level INT, action_summary STRING, authorities_link STRING, country STRING, create_date DATETIME, data_notes STRING, date DATETIME, date_initiated_by_firm DATETIME, date_posted DATETIME, date_terminated DATETIME, date_updated DATETIME, determined_cause STRING, documents STRING, icij_notes STRING, number INT, reason STRING, source STRING, status STRING, target_audience STRING, type STRING, uid STRING, uid_hash STRING, url STRING, slug STRING, device_id INT, created_at DATETIME, updated_at DATETIME) WITH STATS="OUTDEGREE_BY_EDGETYPE", PRIMARY_ID_AS_ATTRIBUTE="true";
+      ADD UNDIRECTED EDGE sels(FROM manufacturers, TO devices);
+      ADD UNDIRECTED EDGE concerns(FROM devices, TO events);
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_8UNI1Q6hyv FOR GRAPH tggraphhack {
+      DROP EDGE sels;
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_Hqsjxsj30n FOR GRAPH tggraphhack {
+      ADD DIRECTED EDGE sels(FROM manufacturers, TO devices) WITH REVERSE_EDGE="reverse_sels";
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_NvlyxPwXaq FOR GRAPH tggraphhack {
+      DROP EDGE concerns;
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_tmn6fq2jS9 FOR GRAPH tggraphhack {
+      ADD DIRECTED EDGE concerns(FROM devices, TO events) WITH REVERSE_EDGE="reverse_concerns";
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_F6naYSffWi FOR GRAPH tggraphhack {
+      DROP EDGE sels;
+      DROP EDGE reverse_sels;
+      DROP EDGE concerns;
+      DROP EDGE reverse_concerns;
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_N2LN31MKKQ FOR GRAPH tggraphhack {
+      ADD DIRECTED EDGE sels(FROM manufacturers, TO devices|FROM devices, TO manufacturers) WITH REVERSE_EDGE="reverse_sels";
+      ADD DIRECTED EDGE concerns(FROM devices, TO events|FROM events, TO devices) WITH REVERSE_EDGE="reverse_concerns";
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_PjbKKmp86x FOR GRAPH tggraphhack {
+      DROP EDGE sels;
+      DROP EDGE reverse_sels;
+      DROP EDGE concerns;
+      DROP EDGE reverse_concerns;
+    }
+
+CREATE SCHEMA_CHANGE JOB local_schema_change_9btxD0FOvS FOR GRAPH tggraphhack {
+      ADD UNDIRECTED EDGE sels(FROM manufacturers, TO devices);
+      ADD UNDIRECTED EDGE concerns(FROM devices, TO events);
+    }
+
