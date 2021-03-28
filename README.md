@@ -151,3 +151,41 @@ I used many technologies :
 	</div>
 	<h1></h1>
 </div>
+
+
+<div>
+	<h3><b>Important Links</b></h3>
+	<ul>
+		<li>
+			<a href="https://tgcloud.io/">https://tgcloud.io/</a>
+		</li>
+		<li>
+			<a href="https://www.youtube.com/watch?v=cNAWrAsjrC8">Intro to tgCloud</a>
+		</li>
+		<li>
+			<a href="https://www.youtube.com/watch?v=cEVbaivITUw">Intro to pyTigerGraph</a>
+		</li>
+		<li>
+			<a href="https://www.youtube.com/watch?v=e2Cy6sRQJnY">Intro to Streamlit and TigerGraph</a>
+		</li>
+		<li>
+			<a href="https://www.youtube.com/watch?v=F7ssqGqmJNo">Intro to Graphistry and Graph-App-Kit</a>
+		</li>
+		<li>
+			<a href="https://community.tigergraph.com/">https://community.tigergraph.com</a>
+		</li>
+		<li>
+			<a href="https://discuss.streamlit.io/">Streamlit Community</a>
+		</li>
+		<li>
+			<a href="https://medium.com/tigergraph/gsql-now-and-in-the-future-65f8904df736">https://medium.com/tigergraph/gsql-now-and-in-the-future-65f8904df736</a>
+		</li>
+		<li>
+			<a href="https://docs.tigergraph.com/dev/gsql-ref/querying/query-operations#:~:text=A%20GSQL%20query%20is%20a,and%20to%20deliver%20resulting%20data.">GSQL Queries</a>
+		</li>
+		<li>
+			<a href="https://www.youtube.com/watch?v=ilUijXK0Qc8&t=137s">DEMO LINK</a>
+		</li>
+	</ul>
+	
+</div>
