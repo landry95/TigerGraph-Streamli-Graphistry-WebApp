@@ -178,6 +178,9 @@ I used many technologies :
 			<a href="https://discuss.streamlit.io/">Streamlit Community</a>
 		</li>
 		<li>
+			<a href="https://www.graphistry.com/docs">Graphistry Documentation</a>
+		</li>
+		<li>
 			<a href="https://medium.com/tigergraph/gsql-now-and-in-the-future-65f8904df736">https://medium.com/tigergraph/gsql-now-and-in-the-future-65f8904df736</a>
 		</li>
 		<li>
