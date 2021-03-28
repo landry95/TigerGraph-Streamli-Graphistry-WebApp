@@ -1,5 +1,7 @@
 <h1>streamlit Data Analysis Application with Tigergraph, graphistry </h1
 <br>
+<span><b><i>(The exported tgcloud solution is in the "tgcloud solution" directory. So it can be imported to tgcloud for testing)</i></b></span>
+<br>
 
 <h1 style="font-family: cursive; color: rgb(255, 127, 39)"><b><i>INTRODUCTION</i></b></h1>
 <div>
