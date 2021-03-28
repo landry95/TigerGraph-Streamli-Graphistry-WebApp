@@ -93,7 +93,7 @@ I used many technologies :
 
 <h1><b><i>GALLERY</i></b></h1>
 <div>
-	<div style="padding-bottom: 25px; border-bottom: 1px solid black">
+	<div>
 		<img src="./src/img/schema.PNG">
 		<small>Shemas from TigerGraph</small>
 	</div>
@@ -102,14 +102,17 @@ I used many technologies :
 		<img src="./src/img/graph_explorer.PNG">
 		<small>Graph Explorer from TigerGraph cloud</small>
 	</div>
+	<h1></h1>
 	<div>
 		<img src="./src/img/map_data.PNG">
 		<small>Data maping  from TigerGraph cloud</small>
 	</div>
+	<h1></h1>
 	<div>
 		<img src="./src/img/example_querry.PNG">
 		<small>Query example from TigerGraph cloud</small>
 	</div>
+	<h1></h1>
 	<div>
 		<img src="./src/img/graphistory.PNG">
 		<small>Graphistory platform</small>
