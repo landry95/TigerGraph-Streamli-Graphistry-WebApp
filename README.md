@@ -89,3 +89,9 @@ I used many technologies :
     <b style="color: orange">I literally fell in love with this technology</b>
     <p></p>
 </div>
+
+
+<h1><b><i>GALLERY</i></b></h1>
+<div>
+	<img src="./src/img/11.PNG">
+</div>
