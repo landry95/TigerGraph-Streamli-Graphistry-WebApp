@@ -93,7 +93,7 @@ I used many technologies :
 
 <h1><b><i>GALLERY</i></b></h1>
 <div>
-	<div>
+	<div style="padding-bottom: 25px; border-bottom: 1px solid black">
 		<img src="./src/img/schema.PNG">
 		<small>Shemas from TigerGraph</small>
 	</div>
