@@ -1,6 +1,7 @@
 <h1>streamlit Data Analysis Application with Tigergraph, graphistry </h1
 <br>
 
+<h1 style="font-family: cursive; color: rgb(255, 127, 39)"><b><i>INTRODUCTION</i></b></h1>
 <div>
     <p>In this project, Here, we are analyzing the <b>"<i>International Medical Devices Database</i>"</b> dataset.</p>
     <p>It contains information on more than 120,000 Recalls, Safety Alerts and Field Safety Notices about medical devices distributed worldwide. The information connects with medical device companies and their subsidiaries.</p>
@@ -56,3 +57,35 @@
 </ol>
 
 
+
+<h1 style="font-family: cursive; color: rgb(255, 127, 39)"><b><i>About</i></b></h1>
+<p style="margin-top: 10px"> 
+    In this project, we are using the <b> International Medical Devices Database's </b> dataset about the medical devices distribution statistics in the world.
+</p>
+<p>
+    I developed it taking part in the TigerGraph Web-App hashton. And it has been an adventure full of learning
+</p>
+I used many technologies :
+<ul>
+    <li>python ; </li>
+    <li>Streamlit ; </li>
+    <li>tgcloud ; </li>
+    <li>GrapgSql ; </li>
+    <li>graphistry ; </li>
+    <li>and many other libraries. </li>
+</ul>
+<hr style="border:1px solid black">
+<h3 style="font-family: cursive; color: rgb(255, 127, 39)"><b>Why did I chose this dataset ?</b></h3>
+<p>I chosed to work on this dataset because it refers to medical domain. Since more than one year, the world is facing a lot of pression, so a such a system can analyse the repartition of medical devices in the countries, and determine the ones that do not have enough and put on strategies to provide them</p>
+<p style="margin-bottom: 30px">
+    We can therefore visualize the data and identify the inequal repartition of this phenomene in countries and also, we can understand the differences depending on the age of the victims and through years
+</p><hr style="border:1px solid black">
+<h3 style="font-family: cursive; color: rgb(255, 127, 39)"><b>What did I do ?</b></h3>
+<div>
+    <p>So, what I have been doing is, saving the data in the tgcloud.io cloud database, and use the GSgl queries to retrieve the data that I wanted to manipulate in the streamlit application.</p>
+    <p>In addition, I also discovered the technology "graphistry" with its library (graphistry), which allowed me to make professional graphs and superb data visualization.</p>
+    <p>Finally, I was able to work with the python libraries also to have an appreciable interface and a multi-pages application</p>
+    <span style="font-size-30px"><b>N.B. </b></span> It was my first time to work with TigerGraph and I discoverd a very great and powerfull technology that I can no longer do without. 
+    <b style="color: orange">I literally fell in love with this technology</b>
+    <p></p>
+</div>
