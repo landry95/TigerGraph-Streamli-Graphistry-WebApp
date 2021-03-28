@@ -94,6 +94,9 @@ I used many technologies :
 <h1><b><i>GALLERY</i></b></h1>
 <div>
 	<div>
+		<img src="./src/img/1.PNG">
+	<h1></h1>
+	<div>
 		<img src="./src/img/schema.PNG">
 		<small>Shemas from TigerGraph</small>
 	</div>
@@ -101,6 +104,22 @@ I used many technologies :
 	<div>
 		<img src="./src/img/graph_explorer.PNG">
 		<small>Graph Explorer from TigerGraph cloud</small>
+	</div>
+	<h1></h1>
+	<div>
+		<img src="./src/img/13.PNG">
+	</div>
+	<h1></h1>
+	<div>
+		<img src="./src/img/15.PNG">
+	</div>
+	<h1></h1>
+	<div>
+		<img src="./src/img/14.PNG">
+	</div>
+	<h1></h1>
+	<div>
+		<img src="./src/img/9.PNG">
 	</div>
 	<h1></h1>
 	<div>
@@ -114,7 +133,19 @@ I used many technologies :
 	</div>
 	<h1></h1>
 	<div>
+		<img src="./src/img/11.PNG">
+	</div>
+	<h1></h1>
+	<div>
 		<img src="./src/img/graphistory.PNG">
 		<small>Graphistory platform</small>
 	</div>
+	<div>
+		<img src="./src/img/3.PNG">
+	</div>
+	<h1></h1>
+	<div>
+		<img src="./src/img/2.PNG">
+	</div>
+	<h1></h1>
 </div>
